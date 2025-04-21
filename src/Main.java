@@ -16,10 +16,10 @@
  *
  * Thirdly, we have an addWorkout() that allows the user to register one of their workouts. This method uses
  * another method called verifyDate() that takes a scanner as a parameter and returns a LocaleDate as to prevent
- * the user from entering a false date (e.g february 29, 2023. Not a leap year so there aren't 29 days in february).
+ * the user from entering a false date (e.g., february 29, 2023. Not a leap year, so there aren't 29 days in february).
  * addWorkout() then type cast LocaleDate to a String to work with ISO date format yyyy-mm-dd.
  *
- * Fourthly, we have a removeWorkout() method that deletes a workout session from our list of workout based on the
+ * Fourthly, we have a removeWorkout() method that deletes a workout session from our list of workouts based on the
  * date specified by the usr
  *
  * Fifthly, we have a displayLongestWorkout() method that only prints the details about the workout that has the longest
@@ -30,10 +30,10 @@
  * */
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class Main {
+
     //CLASS VARIABLES
     private static FitnessManager manager = new FitnessManager();
     private static Scanner input = new Scanner(System.in);
@@ -47,12 +47,12 @@ public class Main {
             try {
                 duration = input.nextInt();
                 if(duration < 0){
-                    System.out.println("Cannot enter a negative number");
+                    System.err.println("Cannot enter a negative number");
                     continue;
                 }
                 break;
             }catch (InputMismatchException iME){
-                System.out.println("Invalid answer. Must be a number");
+                System.err.println("Invalid answer. Must be a number");
                 input.nextLine();
             }
         }
@@ -85,9 +85,9 @@ public class Main {
         while(true){
             activity = input.nextLine().trim();// Trim whitespace from both ends
             if(activity.isEmpty()) {
-                System.out.println("Input cannot be empty. Please enter letters only");
+                System.err.println("Input cannot be empty. Please enter letters only");
             } else if(!activity.matches("[a-zA-Z]+")) {  // Checks for one or more letters
-                System.out.println("Invalid answer. Please enter only letters");
+                System.err.println("Invalid answer. Please enter only letters");
             } else {
                 break;
             }
@@ -103,7 +103,7 @@ public class Main {
                 }
                 break;
             }catch (InputMismatchException iME){
-                System.out.println("Invalid answer. Please try again");
+                System.err.println("Invalid answer. Please try again");
                 input.nextLine();
             }
         }
@@ -118,7 +118,7 @@ public class Main {
                 }
                 break;
             }catch (InputMismatchException iME){
-                System.out.println("Cannot enter letters or characters. Please try again");
+                System.err.println("Cannot enter letters or characters. Please try again");
                 input.nextLine();
             }
         }
@@ -135,7 +135,7 @@ public class Main {
         while(true){
             confirmation = input.nextLine().trim().toLowerCase();  // Trim whitespace from both ends
             if(confirmation.isEmpty()) {
-                System.out.println("Input cannot be empty. Please enter letters only");
+                System.err.println("Input cannot be empty. Please enter letters only");
                 continue;
             }
             if (confirmation.equalsIgnoreCase("yes")) {
@@ -150,7 +150,7 @@ public class Main {
                 System.out.println("Workout deletion cancelled.");
                 return;
             }else{
-                System.out.println("Invalid. Please enter yes/no");
+                System.err.println("Invalid. Please enter yes/no");
             }
         }
     }
@@ -161,7 +161,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        manager.loadFromFile("workoutData.txt");
+        manager.loadFromFile("workoutData.txt");//load the saved file every time we run the program
         boolean continueLoop = true;
         while(continueLoop) {
             System.out.println("""
@@ -199,10 +199,10 @@ public class Main {
                         continueLoop = false;//stops the while loop
                         break;
                     default:
-                        System.out.println("Invalid command");
+                        System.err.println("Invalid command");
                 }
             }catch (InputMismatchException iME){
-                System.out.println("Invalid command. PLease try again");
+                System.err.println("Invalid command. PLease try again");
                 input.next();
             }
         }

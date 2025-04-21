@@ -133,7 +133,7 @@ public class FitnessManager implements FitnessOperations{
             }
             write.close();
         }catch (IOException ioE){
-            System.out.println("something went wrong. File not created");
+            System.err.println("something went wrong. File not created");
         }
     }
 
@@ -142,7 +142,7 @@ public class FitnessManager implements FitnessOperations{
         //find the file path
         File file = new File("C:\\Users\\steve\\OneDrive\\Desktop\\prog2\\Assign3_prog2\\" + filename);
         if (!file.exists()) {
-            System.out.println("Error: File '" + filename + "' not found at: " + file.getAbsolutePath());
+            System.err.println("Error: File '" + filename + "' not found at: " + file.getAbsolutePath());
             return;
         }
 
