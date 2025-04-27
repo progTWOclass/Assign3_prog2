@@ -1,7 +1,7 @@
 // -------------------------------------------------------
-// Assignment (include number)
-// Written by: (include your name and student id)
-// For “Programming 2” Section (include number) – Winter 2025
+// Assignment 2
+// Written by: Steve Banh 1971537
+// For “Programming 2” Section 02 – Winter 2025
 // --------------------------------------------------------
 /*
  * This class is using recursive to solve the triangle path puzzle.
@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class TrianglePuzzle {
 
     public static trackNum findMaxPath(ArrayList<ArrayList<Integer>> triangle, int row, int col, ArrayList<Integer> pathTaken) {
-        // Base case: we're at the bottom row
+        //Base case: we're at the bottom row
         if (row == triangle.size() - 1) {
             //find the current element of the last row.
             int value = triangle.get(row).get(col);
@@ -73,7 +73,7 @@ public class TrianglePuzzle {
                     row.add(Integer.parseInt(part));
                 }
 
-                // Validate triangle shape (each row should have rowNum+1 elements)
+                //Validate triangle shape (each row should have 1 more element than the previous row)
                 if (row.size() != rowNum + 1) {
                     System.out.println("Error: Row " + (rowNum + 1) + " should have " + (rowNum + 1) + " numbers.");
                     continue;
@@ -87,7 +87,7 @@ public class TrianglePuzzle {
         }
 
         for(ArrayList<Integer> row : triangle){
-            for ( Integer col : row) {
+            for (Integer col : row) {
                 System.out.print(" " + col);
             }
             System.out.println();

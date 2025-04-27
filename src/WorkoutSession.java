@@ -1,10 +1,10 @@
 // -------------------------------------------------------
-// Assignment (include number)
-// Written by: (include your name and student id)
-// For “Programming 2” Section (include number) – Winter 2025
+// Assignment 3
+// Written by: Steve Banh 1971537
+// For “Programming 2” Section 02 – Winter 2025
 // --------------------------------------------------------
 /*
- * This class is implementing Comparable<...> interface in order to sort objects in ascending order.
+ * This class is implementing Comparable<...> interface to sort objects in ascending order.
  * In our case, we are sorting WorkoutSessions objects. This class must have and
  * override the CompareTo() method. We are trying to sort WorkoutSessions objects by their dates.
  * */
@@ -56,7 +56,7 @@ public class WorkoutSession implements Comparable<WorkoutSession>{
 
     //METHODS
     //an important method to sort the dates in ascending order by telling our
-    // collection.sort() method in FitnessManager class how to sort the dates
+    //collection.sort() method in FitnessManager class how to sort the dates
     @Override
     public int compareTo(WorkoutSession otherDate) {
         if(otherDate == null){

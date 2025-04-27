@@ -1,26 +1,26 @@
 // -------------------------------------------------------
-// Assignment (include number)
-// Written by: (include your name and student id)
-// For “Programming 2” Section (include number) – Winter 2025
+// Assignment 2
+// Written by: Steve Banh 1971537
+// For “Programming 2” Section 02 – Winter 2025
 // --------------------------------------------------------
 /*
- * This is the main class that provides the user with a menu and perform the actions that the user
+ * This is the main class that provides the user with a menu and performs the actions that the user
  * wishes to do.
  *
  * Firstly, in the main method, I directly called the displayAllSessions() method from FitnessManager class
  * in the switch case since the method is void, and it only displays all workout sessions registered by the user.
  *
  * Secondly, displaySelectedWorkout() method filters the workout sessions by using the duration of the workout
- * specified by the user. It prompts the user to enter a duration, and the program finds all sessions that more
- * than what the time declared by the user and displays them.
+ * specified by the user. It prompts the user to enter a duration, and the program finds all workout sessions that
+ * lasted longer than the time declared by the user and displays them.
  *
  * Thirdly, we have an addWorkout() that allows the user to register one of their workouts. This method uses
  * another method called verifyDate() that takes a scanner as a parameter and returns a LocaleDate as to prevent
  * the user from entering a false date (e.g., february 29, 2023. Not a leap year, so there aren't 29 days in february).
- * addWorkout() then type cast LocaleDate to a String to work with ISO date format yyyy-mm-dd.
+ * Then, the program type casts LocaleDate into a String to work with ISO date format yyyy-mm-dd.
  *
  * Fourthly, we have a removeWorkout() method that deletes a workout session from our list of workouts based on the
- * date specified by the usr
+ * date specified by the user
  *
  * Fifthly, we have a displayLongestWorkout() method that only prints the details about the workout that has the longest
  * duration.
@@ -40,8 +40,10 @@ public class Main {
 
 
     //METHODS
+    //displaying all workout sessions that have a longer duration than the time
+    //entered by the user
     public static void displaySelectedWorkout(){
-        System.out.println("Please enter the minimum workout duration: ");
+        System.out.println("Please enter the minimum workout duration in minutes: ");
         int duration;
         while(true){
             try {
@@ -60,6 +62,8 @@ public class Main {
         manager.displayByDurationThreshold(duration);
     }
 
+    //HELPER METHODS
+    //verify if the date entered by the user is a valid date
     private static LocalDate verifyDate(Scanner input){
         while(true){
             try{
@@ -76,6 +80,7 @@ public class Main {
         }
     }
 
+    //allows the user to register a workout session
     public static void addWorkout(){
         System.out.println("Please enter your date: (yyyy-mm-dd)");
         String date = verifyDate(input).toString();
@@ -126,6 +131,7 @@ public class Main {
         manager.addWorkoutSession(workoutSession);
     }
 
+    //allows the user to delete a workout session based on the date they specified
     public static void removeWorkout(){
         System.out.println("Please enter your date: (yyyy-mm-dd)");
         String date = verifyDate(input).toString();
@@ -133,7 +139,7 @@ public class Main {
         System.out.println("Are you sure you want to delete the workout on " + date + "? (yes/no)");
         String confirmation;
         while(true){
-            confirmation = input.nextLine().trim().toLowerCase();  // Trim whitespace from both ends
+            confirmation = input.nextLine().trim().toLowerCase();//Trim whitespace from both ends
             if(confirmation.isEmpty()) {
                 System.err.println("Input cannot be empty. Please enter letters only");
                 continue;
@@ -155,6 +161,7 @@ public class Main {
         }
     }
 
+    //displaying the longest workout session of the user
     public static void displayLongestWorkout(){
         WorkoutSession longest = manager.findLongestWorkout();
         System.out.println(longest);

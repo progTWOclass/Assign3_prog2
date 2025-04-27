@@ -1,7 +1,7 @@
 // -------------------------------------------------------
-// Assignment (include number)
-// Written by: (include your name and student id)
-// For “Programming 2” Section (include number) – Winter 2025
+// Assignment 3
+// Written by: Steve Banh 1971537
+// For “Programming 2” Section 02 – Winter 2025
 // --------------------------------------------------------
 /*
  * This class is implementing FitnessOperations class. This class must have all the methods
@@ -115,7 +115,7 @@ public class FitnessManager implements FitnessOperations{
         return maxDuration;
     }
 
-    //allow the user to save their workout sessions to a text file
+    //allow the user to save their workout sessions into a text file
     @Override
     public void saveToFile(String filename) {
         try{
@@ -137,7 +137,7 @@ public class FitnessManager implements FitnessOperations{
         }
     }
 
-    //allow the user to load their workout sessions text file
+    //allow the user to load their workout sessions from a text file
     public void loadFromFile(String filename) {
         //find the file path
         File file = new File("C:\\Users\\steve\\OneDrive\\Desktop\\prog2\\Assign3_prog2\\" + filename);
